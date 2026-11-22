@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fredrikstad Basketballklubb</title>
+<meta name="description" content="Fredrikstad Basketballklubb (FBBK) – basket for barn, unge og voksne i Fredrikstad. Basketskolen er gratis i sesongen 2026/27.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* VOICE: lokal klubb, varm og direkte – en hallplakat, ikke en bedriftsside
+   IDEA: kampprogrammet / hallplakaten: store rød-svarte felt, banelinjer, tider som på en tavle
+   PICTURE: tegnet basketbane sett ovenfra med ball i bevegelse, i heltefeltet
+   COLOUR and TYPE: klubbrød #ED1C24, svart #111, hvit; Anton for titler, Barlow Condensed for etiketter, Barlow for tekst
+   LAYOUT: rødt heltefelt i full bredde, så svarte og hvite bånd; tider som tavle med dag-faner */
+:root{color-scheme:light dark;--red:#ED1C24;--red-d:#c4141b;--ink:light-dark(#111,#f4f4f4);--bg:light-dark(#fff,#0e0e0e);--soft:light-dark(#f4f2f0,#1a1a1a);--line:light-dark(#e3e0dc,#2c2c2c);--mute:light-dark(#5b5b5b,#b3b3b3)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{scroll-padding-top:72px;scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.ball{animation:none!important}}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Barlow,system-ui,sans-serif;overflow-x:clip}
+a{color:inherit}
+h1,h2,h3{font-family:Anton,Impact,sans-serif;font-weight:400;line-height:1.05;margin:0 0 .4em;text-wrap:balance;letter-spacing:.01em}
+h2{font-size:clamp(32px,4.4vw,48px)}
+h3{font-size:24px}
+.lbl{font:600 15px/1.2 "Barlow Condensed",sans-serif;text-transform:uppercase;letter-spacing:.04em}
+.wrap{max-width:1240px;margin:0 auto}
+.band{padding:clamp(40px,6vw,88px) max(5vw,16px)}
+/* nav */
+header{position:sticky;top:0;z-index:10;background:#111;color:#fff}
+.nav{display:flex;align-items:center;gap:20px;max-width:1240px;margin:0 auto;padding:10px max(5vw,16px);flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;margin-right:auto}
+.mark{width:40px;height:40px;border-radius:50%;background:var(--red);display:grid;place-items:center;font:20px Anton,sans-serif;color:#fff}
+.brand b{font:22px/1 Anton,sans-serif;letter-spacing:.03em}
+.brand small{display:block;font:600 12px/1.2 "Barlow Condensed",sans-serif;text-transform:uppercase;letter-spacing:.06em;color:#bbb}
+.nav nav{display:flex;gap:4px;flex-wrap:wrap}
+.nav nav a{text-decoration:none;font:600 16px/1 "Barlow Condensed",sans-serif;text-transform:uppercase;padding:12px 10px;border-radius:6px}
+.nav nav a:hover,.nav nav a:focus-visible{background:#2a2a2a}
+.btn{display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:0 22px;border-radius:999px;font:700 18px/1 "Barlow Condensed",sans-serif;text-transform:uppercase;text-decoration:none;letter-spacing:.03em;border:2px solid transparent}
+.btn.w{background:#fff;color:#111}.btn.k{background:#111;color:#fff}.btn.o{border-color:currentColor}
+.btn:focus-visible,a:focus-visible,button:focus-visible{outline:3px solid #ffd400;outline-offset:3px}
+/* hero */
+.hero{background:var(--red);color:#fff;position:relative;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:center}
+.hero h1{font-size:clamp(46px,7vw,92px);margin-bottom:.25em}
+.hero p.lead{font-size:clamp(18px,2vw,21px);max-width:34ch;margin:0 0 24px}
+.facts{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 28px;padding:0;list-style:none}
+.facts li{background:rgba(0,0,0,.22);padding:8px 14px;border-radius:999px;font:600 17px/1.2 "Barlow Condensed",sans-serif}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+.court{width:100%;height:auto;display:block;filter:drop-shadow(0 18px 28px rgba(0,0,0,.25))}
+.ball{animation:bounce 2.4s ease-in-out infinite;transform-origin:center;transform-box:fill-box}
+@keyframes bounce{0%,100%{transform:translateY(0)}45%{transform:translateY(-26px)}55%{transform:translateY(-26px)}}
+/* sections */
+.soft{background:var(--soft)}
+.dark{background:#111;color:#fff}
+.dark .mute{color:#bdbdbd}
+.mute{color:var(--mute)}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(24px,4vw,56px)}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.card{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:22px}
+.dark .card{background:#1b1b1b;border-color:#2e2e2e}
+.steps{counter-reset:s;list-style:none;padding:0;margin:0;display:grid;gap:14px}
+.steps li{counter-increment:s;display:grid;grid-template-columns:48px minmax(0,1fr);gap:14px;align-items:start}
+.steps li::before{content:counter(s);width:48px;height:48px;border-radius:50%;background:var(--red);color:#fff;display:grid;place-items:center;font:24px Anton,sans-serif}
+.steps b{display:block;font:700 20px/1.2 "Barlow Condensed",sans-serif;text-transform:uppercase}
+/* schedule board */
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 20px}
+.tabs button{min-height:44px;padding:0 16px;border-radius:999px;border:2px solid #444;background:transparent;color:#fff;font:600 17px/1 "Barlow Condensed",sans-serif;text-transform:uppercase;cursor:pointer}
+.tabs button[aria-pressed=true]{background:var(--red);border-color:var(--red)}
+.board{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+.team{background:#1b1b1b;border:1px solid #2e2e2e;border-radius:14px;padding:18px 20px}
+.team h3{display:flex;justify-content:space-between;gap:10px;align-items:baseline;margin-bottom:10px}
+.team h3 span{font:600 14px/1.2 "Barlow Condensed",sans-serif;text-transform:uppercase;color:#ff6b70;letter-spacing:.04em;text-align:right}
+.slot{display:grid;grid-template-columns:44px 104px minmax(0,1fr);gap:8px;padding:7px 0;border-top:1px solid #2e2e2e;font-size:15px}
+.slot .d{font:700 17px/1.4 "Barlow Condensed",sans-serif;text-transform:uppercase}
+.slot .t{font-variant-numeric:tabular-nums;white-space:nowrap}
+.empty{color:#bdbdbd;padding:20px 0}
+/* people + sponsors */
+.people{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+.person{border-top:3px solid var(--red);padding:12px 0}
+.person .lbl{color:var(--mute)}
+.person div:last-child{font-size:18px;font-weight:500}
+.spons{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px}
+.spon{border:1px solid var(--line);border-radius:12px;min-height:92px;display:grid;place-items:center;text-align:center;padding:14px;font:700 20px/1.2 "Barlow Condensed",sans-serif}
+.spon small{display:block;font:600 13px/1.3 Barlow,sans-serif;color:var(--mute);margin-top:4px;text-transform:uppercase;letter-spacing:.04em}
+.tier{margin:26px 0 10px}
+/* footer */
+footer{background:#111;color:#fff}
+footer .wrap{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
+footer a{color:#fff}
+.soc{display:flex;gap:10px;flex-wrap:wrap}
+.soc a{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border:1px solid #444;border-radius:999px;text-decoration:none;font:600 16px/1 "Barlow Condensed",sans-serif;text-transform:uppercase}
+.proto{background:#ffd400;color:#111;text-align:center;font:600 15px/1.4 Barlow,sans-serif;padding:8px 16px}
+@media(max-width:900px){.hero .wrap,.grid2{grid-template-columns:minmax(0,1fr)}.grid3,footer .wrap{grid-template-columns:minmax(0,1fr)}.court{max-width:520px;margin:0 auto}}
+@media(max-width:600px){.nav nav{width:100%;overflow-x:auto;flex-wrap:nowrap}.nav nav a{flex:none}.slot{grid-template-columns:40px 96px minmax(0,1fr);font-size:14px}}
+</style>
+</head>
+<body>
+<div class="proto">Ny nettside under arbeid. Den offisielle siden er fortsatt fredrikstadbasket.no.</div>
+<header>
+  <div class="nav">
+    <a class="brand" href="#top" aria-label="Fredrikstad Basketballklubb, til toppen">
+      <span class="mark" aria-hidden="true">F</span>
+      <span><b>FBBK</b><small>Fredrikstad Lumberjacks</small></span>
+    </a>
+    <nav aria-label="Hovedmeny">
+      <a href="#prov">Prøv basket</a>
+      <a href="#tider">Treningstider</a>
+      <a href="#klubben">Om klubben</a>
+      <a href="#styret">Styret</a>
+      <a href="#sponsorer">Sponsorer</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero band">
+  <div class="wrap">
+    <div>
+      <p class="lbl">Fredrikstad Basketballklubb</p>
+      <h1>Prøv basket – gratis hele sesongen</h1>
+      <p class="lead">Basketskolen er for jenter og gutter født 2015 eller senere. Alle kan begynne, også uten å ha spilt før.</p>
+      <ul class="facts">
+        <li>Gratis trening 2026/27</li>
+        <li>Egen ball til alle som blir</li>
+        <li>Medlemskap 50 kr i året</li>
+      </ul>
+      <div class="cta">
+        <a class="btn w" href="https://spond.com/invite/MHKOP">Bli med i Spond</a>
+        <a class="btn o" href="#tider">Se treningstider</a>
+      </div>
+    </div>
+    <svg class="court" viewBox="0 0 520 440" role="img" aria-label="Tegning av en basketbane sett ovenfra med en ball">
+      <defs>
+        <linearGradient id="wood" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#f3c88f"/><stop offset="1" stop-color="#d99a5b"/></linearGradient>
+        <radialGradient id="bl" cx=".35" cy=".3" r=".8"><stop offset="0" stop-color="#ff9a4d"/><stop offset=".6" stop-color="#e8661c"/><stop offset="1" stop-color="#a8420d"/></radialGradient>
+        <pattern id="planks" width="520" height="22" patternUnits="userSpaceOnUse"><rect width="520" height="22" fill="none"/><line x1="0" y1="21.5" x2="520" y2="21.5" stroke="#c8874a" stroke-opacity=".35"/></pattern>
+      </defs>
+      <rect x="10" y="20" width="500" height="400" rx="18" fill="#7a0c10"/>
+      <rect x="24" y="34" width="472" height="372" rx="10" fill="url(#wood)"/>
+      <rect x="24" y="34" width="472" height="372" rx="10" fill="url(#planks)"/>
+      <g fill="none" stroke="#fff" stroke-width="4" stroke-opacity=".92">
+        <rect x="40" y="50" width="440" height="340" rx="4"/>
+        <line x1="260" y1="50" x2="260" y2="390"/>
+        <circle cx="260" cy="220" r="46"/>
+        <rect x="40" y="160" width="110" height="120"/>
+        <rect x="370" y="160" width="110" height="120"/>
+        <path d="M40 78 H70 A150 150 0 0 1 70 362 H40"/>
+        <path d="M480 78 H450 A150 150 0 0 0 450 362 H480"/>
+      </g>
+      <rect x="40" y="160" width="110" height="120" fill="#ED1C24" fill-opacity=".85"/>
+      <rect x="370" y="160" width="110" height="120" fill="#111" fill-opacity=".8"/>
+      <circle cx="260" cy="220" r="44" fill="#ED1C24" fill-opacity=".9"/>
+      <text x="260" y="234" text-anchor="middle" font-family="Anton, Impact, sans-serif" font-size="38" fill="#fff">FBBK</text>
+      <g class="ball">
+        <ellipse cx="352" cy="336" rx="40" ry="10" fill="#000" opacity=".22"/>
+        <circle cx="352" cy="290" r="40" fill="url(#bl)"/>
+        <g fill="none" stroke="#3a1606" stroke-width="3">
+          <path d="M312 290 H392"/><path d="M352 250 V330"/>
+          <path d="M324 262 C340 280 340 300 324 318"/><path d="M380 262 C364 280 364 300 380 318"/>
+        </g>
+        <circle cx="338" cy="272" r="9" fill="#fff" opacity=".25"/>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<section class="band" id="prov">
+  <div class="wrap grid2">
+    <div>
+      <h2>Slik begynner du</h2>
+      <p class="mute">Du kan begynne når som helst i sesongen. Treningene følger skoleåret.</p>
+      <ol class="steps">
+        <li><div><b>Bli med i Spond</b>Der ligger alle tider og steder, alltid oppdatert. <a href="https://spond.com/invite/MHKOP">spond.com/invite/MHKOP</a></div></li>
+        <li><div><b>Kom på en trening</b>Ta med innesko og drikkeflaske. Ta gjerne med en venn eller venninne.</div></li>
+        <li><div><b>Meld deg inn</b>Når du vil fortsette, melder du deg inn i Min idrett. Medlemskapet koster 50 kr i året. <a href="https://www.minidrett.no/medlemskap/113898">Meld inn i Min idrett</a></div></li>
+      </ol>
+    </div>
+    <div class="grid3" style="grid-template-columns:minmax(0,1fr)">
+      <div class="card">
+        <p class="lbl" style="color:var(--red)">Basketskolen U10</p>
+        <h3>Født 2017 og senere</h3>
+        <p class="mute" style="margin:0">Mandag Trara skole, onsdag Lislebyhallen og torsdag Cicignon skole, alle dager kl. 17.30.</p>
+      </div>
+      <div class="card">
+        <p class="lbl" style="color:var(--red)">Basketskolen U12</p>
+        <h3>Født 2015 og 2016</h3>
+        <p class="mute" style="margin:0">Onsdag kl. 17.30 i Lislebyhallen og torsdag kl. 18.30 på Cicignon skole.</p>
+      </div>
+      <div class="card">
+        <p class="lbl" style="color:var(--red)">Født 2014 og tidligere</p>
+        <h3>Plass på lagene våre</h3>
+        <p class="mute" style="margin:0">Se treningstidene under, eller ta kontakt så finner vi riktig lag.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band dark" id="tider">
+  <div class="wrap">
+    <h2>Treningstider 2026/27</h2>
+    <p class="mute">Åpen hall søndager kl. 17–19 i Kongstenhallen, gratis for medlemmer. Endringer kommer alltid først i Spond.</p>
+    <div class="tabs" role="group" aria-label="Velg dag" id="days"></div>
+    <div class="board" id="board" aria-live="polite"></div>
+  </div>
+</section>
+
+<section class="band" id="klubben">
+  <div class="wrap grid2">
+    <div>
+      <h2>Om klubben</h2>
+      <p>Fredrikstad Basketballklubb (FBBK) ble stiftet i 1995 og er en breddeklubb for barn, unge og voksne. Vi har rundt 300 medlemmer. Hjemmearenaen vår er Lislebyhallen, og vi trener også i Kongstenhallen, Glemmenhallen og på skoler i byen.</p>
+      <p>Hos oss er det plass til alle, uansett alder, kjønn, bakgrunn og nivå. Vi vil at basketballen skal bygge ungdom med gode verdier og holdninger, både på og utenfor banen.</p>
+      <p>Vi driver internasjonale utvekslinger gjennom Erasmus+, og sammen med FRID jobber vi med økonomisk inkludering, slik at pris ikke skal stoppe noen fra å være med.</p>
+    </div>
+    <div>
+      <p class="lbl mute">Verdiene våre</p>
+      <div class="people" style="grid-template-columns:minmax(0,1fr)">
+        <div class="person"><div class="lbl">Gode opplevelser</div><div>Basket skal være gøy, på trening og på kamp.</div></div>
+        <div class="person"><div class="lbl">Respekt</div><div>For medspillere, motstandere, dommere og trenere.</div></div>
+        <div class="person"><div class="lbl">Åpen og inkluderende</div><div>Alle får samme grunntilbud, og alle er velkomne.</div></div>
+      </div>
+      <p style="margin-top:22px"><b>Vil du bidra?</b> Vi trenger alltid trenere, dommere og folk som stiller opp når det trengs. Vi tilbyr kurs, internt og via NIF og NBBF. Skriv til <a href="mailto:post@fredrikstadbasket.no">post@fredrikstadbasket.no</a>.</p>
+    </div>
+  </div>
+</section>
+
+<section class="band soft" id="styret">
+  <div class="wrap">
+    <h2>Styret og roller</h2>
+    <p class="mute">Valgt på årsmøtet 24. mars 2026.</p>
+    <div class="people" id="people"></div>
+  </div>
+</section>
+
+<section class="band" id="sponsorer">
+  <div class="wrap">
+    <h2>Sponsorer og partnere</h2>
+    <p class="mute">Takk til alle som gjør basket i Fredrikstad mulig. Vil bedriften din bli med? Skriv til <a href="mailto:post@fredrikstadbasket.no">post@fredrikstadbasket.no</a>.</p>
+    <div id="sponsors"></div>
+    <p class="mute" style="font-size:14px;margin-top:18px">Logoene legges inn i den ferdige siden.</p>
+  </div>
+</section>
+</main>
+
+<footer class="band" id="kontakt">
+  <div class="wrap">
+    <div>
+      <h3>Kontakt</h3>
+      <p>E-post: <a href="mailto:post@fredrikstadbasket.no">post@fredrikstadbasket.no</a><br>Det kan ta noen dager før vi svarer. Haster det, send en melding på Facebook.</p>
+    </div>
+    <div>
+      <h3>Følg oss</h3>
+      <div class="soc">
+        <a href="https://facebook.com/fredrikstadbasket">Facebook</a>
+        <a href="https://instagram.com/fredrikstadbasket">Instagram</a>
+        <a href="https://www.tiktok.com/@fredrikstadbasket">TikTok</a>
+      </div>
+    </div>
+    <div>
+      <h3>Bli medlem</h3>
+      <p>Medlemskap 50 kr i året. <a href="https://www.minidrett.no/medlemskap/113898">Meld inn i Min idrett</a>. Du kan også bli støttemedlem.</p>
+      <p class="mute" style="font-size:14px">Fredrikstad Basketballklubb · org.nr. 981 439 368</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+{
+const DAYS=['Man','Tir','Ons','Tor','Fre','Søn'];
+const FULL={Man:'Mandag',Tir:'Tirsdag',Ons:'Onsdag',Tor:'Torsdag',Fre:'Fredag','Søn':'Søndag'};
+const teams=[
+ {n:'U10',k:'Basketskolen, født 2017–',s:[['Man','17:30–18:30','Trara skole'],['Ons','17:30–18:30','Lislebyhallen'],['Tor','17:30–18:30','Cicignon skole']]},
+ {n:'U12',k:'Basketskolen, født 2015–16',s:[['Ons','17:30–18:30','Lislebyhallen'],['Tor','18:30–19:30','Cicignon skole']]},
+ {n:'U13/U14',k:'Seriespill',s:[['Tir','18:00–20:00','Cicignon skole'],['Ons','19:00–20:30','Lislebyhallen'],['Fre','16:00–17:30','Kongstenhallen E']]},
+ {n:'G15B/G16B',k:'Seriespill',s:[['Man','19:30–20:30','Lislebyhallen'],['Ons','18:30–20:00','Glemmenhallen'],['Tor','16:00–17:30','Kongstenhallen E']]},
+ {n:'G16A',k:'Seriespill',s:[['Tir','17:30–19:00','Kongstenhallen E'],['Ons','20:00–21:30','Glemmenhallen'],['Tor','17:30–19:00','Kongstenhallen E']]},
+ {n:'G17/19',k:'Seriespill',s:[['Tir','20:30–22:00','Kongstenhallen E'],['Ons','20:30–22:00','Lislebyhallen'],['Tor','20:30–22:00','Kongstenhallen E']]},
+ {n:'Kvinner',k:'Seniorlag',s:[['Tir','19:00–20:30','Kongstenhallen E'],['Tor','19:00–20:30','Kongstenhallen E']]},
+ {n:'Herrer 3M',k:'Seniorlag',s:[['Tir','20:30–22:00','Kongstenhallen E'],['Tor','20:30–22:00','Kongstenhallen E']]},
+ {n:'Åpen hall',k:'Gratis for medlemmer',s:[['Søn','17:00–19:00','Kongstenhallen']]}
+];
+const people=[
+ ['Styreleder','Jan Stobbe'],['Nestleder','Daniel Hammer'],
+ ['Styremedlem','Kjetil Finstad'],['Styremedlem','Laia Kristine Bringa'],['Styremedlem','Henrik Landeklint'],
+ ['Styremedlem','Magnus Johannessen'],['Styremedlem','Maria Sagen'],['Styremedlem','Ragna Rygh Svela'],
+ ['Varamedlem','Henrik Sagen'],['Varamedlem','Hilde Skaug'],
+ ['Kontrollutvalg','Simen Sperling Hansen og Rolf Sorthe'],['Valgkomité','Kristine Grønnerød Bengtson og Lene Nilsen'],
+ ['Økonomiansvarlig','Jan Stobbe'],['Sportslig leder','Jan Stobbe og Daniel Hammer'],
+ ['Dommeransvarlig','Simen Sperling Hansen'],['Hallansvarlig','Odiljon (Adil) Kamilovich Kodirov'],
+ ['FRID-miljøkontakter','Jan Stobbe og Kjetil Finstad']
+];
+const sponsors=[
+ ['Gullsponsor',[['Stabburet','']]],
+ ['Sølvsponsor',[['Idyllfestivalen','']]],
+ ['Digital partner',[['Ut av boksen','']]],
+ ['Leverandør av klubbtøy',[['Anton Sport','Craft']]],
+ ['Lagsponsorer',[['Alf Johansen AS',''],['Diedrichsen AS','Bygg og anlegg'],['EG Murservice AS',''],['Pretec',''],['Zephyr','']]]
+];
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const daysEl=document.getElementById('days'),board=document.getElementById('board');
+let cur='Alle';
+const render=()=>{
+  const list=teams.map(t=>({...t,s:cur==='Alle'?t.s:t.s.filter(x=>x[0]===cur)})).filter(t=>t.s.length);
+  board.innerHTML=list.length?list.map(t=>`<article class="team"><h3>${esc(t.n)}<span>${esc(t.k)}</span></h3>${t.s.map(x=>`<div class="slot"><span class="d" title="${FULL[x[0]]}">${x[0]}</span><span class="t">${x[1]}</span><span>${esc(x[2])}</span></div>`).join('')}</article>`).join(''):`<p class="empty">Ingen treninger ${FULL[cur].toLowerCase()}.</p>`;
+  daysEl.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.d===cur));
+};
+daysEl.innerHTML=['Alle',...DAYS].map(d=>`<button type="button" data-d="${d}" aria-pressed="false">${d==='Alle'?'Alle dager':FULL[d]}</button>`).join('');
+daysEl.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;cur=b.dataset.d;render()});
+render();
+document.getElementById('people').innerHTML=people.map(p=>`<div class="person"><div class="lbl">${esc(p[0])}</div><div>${esc(p[1])}</div></div>`).join('');
+document.getElementById('sponsors').innerHTML=sponsors.map(([tier,list])=>`<p class="lbl tier">${esc(tier)}</p><div class="spons">${list.map(s=>`<div class="spon"><div>${esc(s[0])}${s[1]?`<small>${esc(s[1])}</small>`:''}</div></div>`).join('')}</div>`).join('');
+}
+</script>
+</body>
+</html>
