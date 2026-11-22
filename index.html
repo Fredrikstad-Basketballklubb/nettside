@@ -87,17 +87,20 @@ header{position:sticky;top:0;z-index:10;background:#111;color:#fff}
 .tier{margin:26px 0 10px}
 /* matches */
 .next{background:#111;color:#fff}
-.next .wrap{display:grid;gap:16px}
+.next .wrap{display:grid;gap:18px}
 .next-h{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap}
 .next-h h2{margin:0}
 .next-h a{font:600 16px/1 "Barlow Condensed",sans-serif;text-transform:uppercase}
-.matches{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
-.match{background:#1b1b1b;border:1px solid #2e2e2e;border-left:4px solid var(--red);border-radius:12px;padding:14px 16px;display:grid;gap:6px}
-.match .when{font:700 18px/1.2 "Barlow Condensed",sans-serif;text-transform:uppercase;white-space:nowrap}
-.match .teams{font-size:17px;font-weight:600}
+.day{font:700 20px/1.2 "Barlow Condensed",sans-serif;text-transform:uppercase;letter-spacing:.03em;color:#ff6b70;margin:10px 0 0;padding-bottom:6px;border-bottom:1px solid #2e2e2e}
+.matches{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
+.match{background:#1b1b1b;border:1px solid #2e2e2e;border-left:5px solid var(--red);border-radius:12px;padding:14px 16px;display:grid;gap:4px;align-content:start}
+.match.away{border-left-color:#777}
+.match .tm{font:400 30px/1.05 Anton,Impact,sans-serif;letter-spacing:.01em}
+.match .vs{font-size:17px;font-weight:600}
+.match .when{font:700 17px/1.3 "Barlow Condensed",sans-serif;text-transform:uppercase;white-space:nowrap}
 .match .meta{font-size:14px;color:#bdbdbd}
-.match .tag{justify-self:start;font:600 13px/1 "Barlow Condensed",sans-serif;text-transform:uppercase;letter-spacing:.04em;padding:5px 8px;border-radius:999px;background:var(--red)}
-.match .tag.away{background:#3a3a3a}
+.more{justify-self:start;min-height:44px;padding:0 20px;border-radius:999px;border:2px solid #fff;background:transparent;color:#fff;font:700 17px/1 "Barlow Condensed",sans-serif;text-transform:uppercase;cursor:pointer}
+.more:hover{background:#fff;color:#111}
 /* footer */
 footer{background:#111;color:#fff}
 footer .wrap{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
@@ -188,7 +191,8 @@ footer a{color:#fff}
       <h2 id="kamper-h">Neste kamper</h2>
       <a href="https://kamper.basket.no/">Alle kamper og resultater</a>
     </div>
-    <div class="matches" id="matches"><p class="meta">Henter kamper …</p></div>
+    <div id="matches"><p class="meta">Henter kamper …</p></div>
+    <button type="button" class="more" id="more" hidden>Vis alle kommende kamper</button>
   </div>
 </section>
 
@@ -336,14 +340,29 @@ daysEl.innerHTML=['Alle',...DAYS].map(d=>`<button type="button" data-d="${d}" ar
 daysEl.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;cur=b.dataset.d;render()});
 render();
 
-const mEl=document.getElementById('matches');
-const WD=['søn','man','tir','ons','tor','fre','lør'];
-const fmt=d=>`${WD[d.getDay()]} ${d.getDate()}.${d.getMonth()+1}. kl. ${String(d.getHours()).padStart(2,'0')}.${String(d.getMinutes()).padStart(2,'0')}`;
+const mEl=document.getElementById('matches'),moreBtn=document.getElementById('more');
+const WDL=['søndag','mandag','tirsdag','onsdag','torsdag','fredag','lørdag'];
+const MON=['januar','februar','mars','april','mai','juni','juli','august','september','oktober','november','desember'];
+const hm=d=>`${String(d.getHours()).padStart(2,'0')}.${String(d.getMinutes()).padStart(2,'0')}`;
+const dayKey=d=>d.toDateString();
 const isUs=n=>/fredrikstad|lumberjacks|fbbk/i.test(n||'');
+const endOfWeek=d=>{const e=new Date(d);e.setHours(23,59,59,999);e.setDate(e.getDate()+((7-e.getDay())%7));return e};
+let all=[];
+const card=m=>{const home=isUs(m.home);const us=home?m.home:m.away,opp=home?m.away:m.home;const d2=/\(D\)/.test(us)?' (D)':'';
+  return `<article class="match${home?'':' away'}"><span class="tm">${esc((m.team||'Fredrikstad')+d2)}</span><span class="vs">${home?'Hjemme':'Borte'} mot ${esc(opp)}</span><span class="when">Kl. ${hm(m.d)}</span><span class="meta">${esc(m.arena||'Sted kommer')}</span></article>`};
+const draw=list=>{
+  if(!list.length){mEl.innerHTML='<p class="meta">Ingen kamper satt opp akkurat nå. Se alle kamper på kamper.basket.no.</p>';return}
+  const groups=[];list.forEach(m=>{const k=dayKey(m.d);let g=groups.find(x=>x.k===k);if(!g)groups.push(g={k,d:m.d,ms:[]});g.ms.push(m)});
+  mEl.innerHTML=groups.map(g=>`<h3 class="day">${WDL[g.d.getDay()]} ${g.d.getDate()}. ${MON[g.d.getMonth()]}</h3><div class="matches">${g.ms.map(card).join('')}</div>`).join('');
+};
 fetch('matches.json',{cache:'no-store'}).then(r=>r.ok?r.json():[]).catch(()=>[]).then(list=>{
-  const now=Date.now()-2*3600e3;
-  const up=(Array.isArray(list)?list:[]).map(m=>({...m,d:new Date(m.start)})).filter(m=>!isNaN(m.d)&&m.d.getTime()>=now).sort((a,b)=>a.d-b.d).slice(0,6);
-  mEl.innerHTML=up.length?up.map(m=>{const home=isUs(m.home);return `<article class="match"><span class="tag${home?'':' away'}">${home?'Hjemmekamp':'Bortekamp'}</span><span class="when">${fmt(m.d)}</span><span class="teams">${esc(m.home)} – ${esc(m.away)}</span><span class="meta">${esc(m.team||'')}${m.team&&m.arena?' · ':''}${esc(m.arena||'')}</span></article>`}).join(''):'<p class="meta">Ingen kamper satt opp akkurat nå. Se alle kamper på kamper.basket.no.</p>';
+  const now=new Date(Date.now()-2*3600e3);
+  all=(Array.isArray(list)?list:[]).map(m=>({...m,d:new Date(m.start)})).filter(m=>!isNaN(m.d)&&m.d>=now).sort((a,b)=>a.d-b.d);
+  let end=endOfWeek(new Date());
+  let shown=all.filter(m=>m.d<=end);
+  if(shown.length<3&&all.length){end=endOfWeek(new Date(end.getTime()+864e5));shown=all.filter(m=>m.d<=end);if(!shown.length)shown=all.filter(m=>m.d<=endOfWeek(all[0].d))}
+  draw(shown);
+  if(all.length>shown.length){moreBtn.hidden=false;moreBtn.textContent=`Vis alle kommende kamper (${all.length})`;moreBtn.onclick=()=>{draw(all);moreBtn.hidden=true}}
 });
 document.getElementById('people').innerHTML=people.map(p=>`<div class="person"><div class="lbl">${esc(p[0])}</div><div>${esc(p[1])}</div></div>`).join('');
 document.getElementById('sponsors').innerHTML=sponsors.map(([tier,list])=>`<p class="lbl tier">${esc(tier)}</p><div class="spons">${list.map(s=>`<div class="spon"><div>${esc(s[0])}${s[1]?`<small>${esc(s[1])}</small>`:''}</div></div>`).join('')}</div>`).join('');
