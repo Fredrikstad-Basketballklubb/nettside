@@ -113,6 +113,14 @@ header{position:sticky;top:0;z-index:10;background:#111;color:#fff}
 .story h3{margin:0}
 .story p{margin:0;color:var(--mute)}
 #wk a{color:#fff}
+/* goals */
+.goals-band{background:var(--red);color:#fff}
+.goals{list-style:none;counter-reset:g;padding:0;margin:20px 0 0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.goals li{counter-increment:g;background:rgba(0,0,0,.2);border-radius:14px;padding:18px 18px 20px;font-size:18px;font-weight:500;line-height:1.35}
+.goals li::before{content:counter(g);display:block;font:44px/1 Anton,Impact,sans-serif;margin-bottom:8px}
+.goals-note{margin:18px 0 0;font-size:15px}
+.plain{margin:0;padding-left:1.1em;display:grid;gap:8px}
+.card h3{margin-bottom:10px}.card p{margin:0 0 10px}.card p:last-child{margin:0}
 /* footer */
 footer{background:#111;color:#fff}
 footer .wrap{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
@@ -120,7 +128,7 @@ footer a{color:#fff}
 .soc{display:flex;gap:10px;flex-wrap:wrap}
 .soc a{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border:1px solid #444;border-radius:999px;text-decoration:none;font:600 16px/1 "Barlow Condensed",sans-serif;text-transform:uppercase}
 .proto{background:#ffd400;color:#111;text-align:center;font:600 15px/1.4 Barlow,sans-serif;padding:8px 16px}
-@media(max-width:900px){.hero .wrap,.grid2{grid-template-columns:minmax(0,1fr)}.grid3,footer .wrap,.news{grid-template-columns:minmax(0,1fr)}.court{max-width:520px;margin:0 auto}}
+@media(max-width:900px){.hero .wrap,.grid2{grid-template-columns:minmax(0,1fr)}.grid3,footer .wrap,.news,.goals{grid-template-columns:minmax(0,1fr)}.court{max-width:520px;margin:0 auto}}
 @media(max-width:600px){.nav{gap:4px;padding:6px 12px}.mark{width:32px;height:32px;font-size:17px}.brand b{font-size:19px}.brand small{font-size:11px}.nav nav{width:100%;overflow-x:auto;flex-wrap:nowrap;scrollbar-width:none}.nav nav a{flex:none;font-size:15px;padding:10px 8px}.match{padding:12px 14px}.match .tm{font-size:26px}.day{font-size:18px}.proto{font-size:13px;padding:6px 12px}.slot{grid-template-columns:40px 96px minmax(0,1fr);font-size:14px}}
 </style>
 </head>
@@ -154,7 +162,7 @@ footer a{color:#fff}
       <p class="lead">Basket for barn, unge og voksne i Fredrikstad. Fra Basketskolen for de yngste til seniorlag for kvinner og menn.</p>
       <ul class="facts">
         <li>Rundt 300 medlemmer</li>
-        <li>Lag fra U10 til senior</li>
+        <li>Fra 5 år til senior</li>
         <li>Siden 1995</li>
         <li id="wk" hidden></li>
       </ul>
@@ -250,7 +258,7 @@ footer a{color:#fff}
     <div class="grid3" style="grid-template-columns:minmax(0,1fr)">
       <div class="card">
         <p class="lbl" style="color:var(--red)">Basketskolen U10</p>
-        <h3>Født 2017 og senere</h3>
+        <h3>Født 2017 og senere, fra 5 år</h3>
         <p class="mute" style="margin:0">Mandag Trara skole, onsdag Lislebyhallen og torsdag Cicignon skole, alle dager kl. 17.30.</p>
       </div>
       <div class="card">
@@ -280,19 +288,64 @@ footer a{color:#fff}
   <div class="wrap grid2">
     <div>
       <h2>Om klubben</h2>
-      <p>Fredrikstad Basketballklubb (FBBK) ble stiftet i 1995 og er en breddeklubb for barn, unge og voksne. Vi har rundt 300 medlemmer. Hjemmearenaen vår er Lislebyhallen, og vi trener også i Kongstenhallen, Glemmenhallen og på skoler i byen.</p>
-      <p>Hos oss er det plass til alle, uansett alder, kjønn, bakgrunn og nivå. Vi vil at basketballen skal bygge ungdom med gode verdier og holdninger, både på og utenfor banen.</p>
-      <p>Vi driver internasjonale utvekslinger gjennom Erasmus+, og sammen med FRID jobber vi med økonomisk inkludering, slik at pris ikke skal stoppe noen fra å være med.</p>
+      <p>Fredrikstad Basketballklubb (FBBK) ble stiftet i 1995 som Cicignon Basketballklubb, og lagene våre heter Lumberjacks. Vi har rundt 300 medlemmer, og Lislebyhallen er hjemmearenaen vår.</p>
+      <p>FBBK er en ungdomsklubb der spillerutvikling står sentralt. Vi er både en bred, inkluderende klubb og et seriøst utviklingsmiljø. Det er plass til deg som er med for fellesskapet, og en seriøs vei for deg som vil bli så god som mulig.</p>
+      <p>Vi bruker også basketball til fellesskap, inkludering og lederutvikling. Målet er å gjøre Fredrikstad til en basketballby.</p>
     </div>
     <div>
       <p class="lbl mute">Verdiene våre</p>
       <div class="people" style="grid-template-columns:minmax(0,1fr)">
-        <div class="person"><div class="lbl">Gode opplevelser</div><div>Basket skal være gøy, på trening og på kamp.</div></div>
-        <div class="person"><div class="lbl">Respekt</div><div>For medspillere, motstandere, dommere og trenere.</div></div>
-        <div class="person"><div class="lbl">Åpen og inkluderende</div><div>Alle får samme grunntilbud, og alle er velkomne.</div></div>
+        <div class="person"><div class="lbl">Gode opplevelser</div><div>For alle, uansett nivå.</div></div>
+        <div class="person"><div class="lbl">Utvikling</div><div>For hver spiller, fra første trening til så langt du vil og kan nå.</div></div>
+        <div class="person"><div class="lbl">Respekt</div><div>For hverandre, dommere, motstandere og reglene. Vi klager ikke på dommere, heller ikke fra tribunen.</div></div>
+        <div class="person"><div class="lbl">Åpen og inkluderende</div><div>Økonomi, bakgrunn eller erfaring skal ikke stenge noen ute.</div></div>
       </div>
-      <p style="margin-top:22px"><b>Vil du bidra?</b> Vi trenger alltid trenere, dommere og folk som stiller opp når det trengs. Vi tilbyr kurs, internt og via NIF og NBBF. Skriv til <a href="mailto:post@fredrikstadbasket.no">post@fredrikstadbasket.no</a>.</p>
     </div>
+  </div>
+</section>
+
+<section class="band goals-band" id="mal" aria-labelledby="mal-h">
+  <div class="wrap">
+    <h2 id="mal-h">Hit skal vi: mål mot 2030</h2>
+    <ol class="goals">
+      <li>Ingen barn slutter i FBBK fordi familien ikke har råd.</li>
+      <li>Lag i seriespill for jenter og gutter på minst annethvert årstrinn fra 13 år.</li>
+      <li>Hver spiller fra 13 år får en utviklingssamtale med treneren hvert år.</li>
+      <li>Alle hovedtrenere har minst Trener 1.</li>
+      <li>Egne dommere og fast sekretariat på alle hjemmekamper.</li>
+      <li>FBBK er «Godkjent klubb» i NBBF fra sesongen 2027/28.</li>
+    </ol>
+    <p class="goals-note">Målene står i klubbhåndboka og sportsplanen for 2027–2030, som legges fram for årsmøtet 23. mars 2027.</p>
+  </div>
+</section>
+
+<section class="band" id="mer" aria-labelledby="mer-h">
+  <div class="wrap">
+    <h2 id="mer-h">Mer enn basketball</h2>
+    <div class="grid3">
+      <div class="card">
+        <h3>Dette gjør vi også</h3>
+        <ul class="plain">
+          <li>Basketskole og skoleprosjekter der ungdom fra klubben er instruktører</li>
+          <li>Sommercamp, også for barn som ellers ikke får ferieopplevelser</li>
+          <li>Gratis 3x3-turneringer i nærmiljøet</li>
+          <li>Unge ledere: spillere fra 15 år får ansvar som hjelpetrenere, dommere og instruktører</li>
+          <li>Internasjonale cuper og utvekslinger, blant annet Erasmus+-utvekslingen «Slam Dunk for Social Inclusion» i 2026 med ungdom fra Norge, Bulgaria og Portugal</li>
+          <li>Satsing på jenter og kvinner, med jentelag og et kvinnelag der du kan begynne uten erfaring</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Alle skal kunne være med</h3>
+        <p>Ingen barn skal slutte fordi familien ikke har råd. Familier kan be om delbetaling, fritak eller støtte til utstyr og cuper.</p>
+        <p>Snakk med treneren, laglederen eller noen i styret, eller skriv til <a href="mailto:post@fredrikstadbasket.no">post@fredrikstadbasket.no</a>. Henvendelsen behandles fortrolig.</p>
+      </div>
+      <div class="card">
+        <h3>Trygg idrett</h3>
+        <p>De fleste i FBBK er under 18 år. Alle trenere, lagledere og andre med ansvar for barn og unge skal vise politiattest og ta trenerattesten før de starter. Bilder av barn deles bare med samtykke.</p>
+        <p>Vil du si fra om noe? Snakk med en trener, lagleder eller et styremedlem du stoler på, eller skriv til <a href="mailto:post@fredrikstadbasket.no">post@fredrikstadbasket.no</a>. Du kan også bruke <a href="https://www.idrettsforbundet.no/tema/varsling/">NIFs varslingstjeneste</a> eller <a href="https://www.basket.no/om-nbbf/varsling/">NBBFs varslingstjeneste</a>.</p>
+      </div>
+    </div>
+    <p class="mute" style="margin-top:22px"><b>Vil du bidra?</b> Klubben lever av frivillighet. Vi trenger alltid trenere, dommere, folk i sekretariatet og folk som stiller opp når det trengs, og klubben betaler kursene. Skriv til <a href="mailto:post@fredrikstadbasket.no">post@fredrikstadbasket.no</a>.</p>
   </div>
 </section>
 
@@ -301,6 +354,7 @@ footer a{color:#fff}
     <h2>Styret og roller</h2>
     <p class="mute">Valgt på årsmøtet 24. mars 2026.</p>
     <div class="people" id="people"></div>
+    <p class="mute" style="margin-top:22px"><b>Klubbens dokumenter.</b> Lov, organisasjonsplan, klubbhåndbok og sportsplan legges ut her når årsmøtet har vedtatt dem 23. mars 2027.</p>
   </div>
 </section>
 
