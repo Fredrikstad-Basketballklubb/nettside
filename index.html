@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Fredrikstad Basketballklubb</title>
-<meta name="description" content="Fredrikstad Basketballklubb (FBBK) – basket for barn, unge og voksne i Fredrikstad. Basketskolen er gratis i sesongen 2026/27.">
+<meta name="description" content="Fredrikstad Basketballklubb (FBBK) – en klubb for alle. Basket for barn, unge og voksne i Fredrikstad, fra Basketskolen til seniorlag.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
@@ -101,6 +101,18 @@ header{position:sticky;top:0;z-index:10;background:#111;color:#fff}
 .match .meta{font-size:14px;color:#bdbdbd}
 .more{justify-self:start;min-height:44px;padding:0 20px;border-radius:999px;border:2px solid #fff;background:transparent;color:#fff;font:700 17px/1 "Barlow Condensed",sans-serif;text-transform:uppercase;cursor:pointer}
 .more:hover{background:#fff;color:#111}
+/* news */
+.news{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:20px;align-items:stretch}
+.lead-story{background:var(--red);color:#fff;border-radius:16px;padding:clamp(22px,3vw,36px);display:grid;gap:12px;align-content:start}
+.lead-story h3{font-size:clamp(30px,3.6vw,44px);margin:0}
+.lead-story p{margin:0;max-width:60ch}
+.lead-story .btn{justify-self:start;margin-top:6px}
+.side{display:grid;gap:20px}
+.story{border:1px solid var(--line);border-top:4px solid var(--ink);border-radius:14px;padding:20px;display:grid;gap:6px;align-content:start}
+.story .lbl{color:var(--red);margin:0}
+.story h3{margin:0}
+.story p{margin:0;color:var(--mute)}
+#wk a{color:#fff}
 /* footer */
 footer{background:#111;color:#fff}
 footer .wrap{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
@@ -108,7 +120,7 @@ footer a{color:#fff}
 .soc{display:flex;gap:10px;flex-wrap:wrap}
 .soc a{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border:1px solid #444;border-radius:999px;text-decoration:none;font:600 16px/1 "Barlow Condensed",sans-serif;text-transform:uppercase}
 .proto{background:#ffd400;color:#111;text-align:center;font:600 15px/1.4 Barlow,sans-serif;padding:8px 16px}
-@media(max-width:900px){.hero .wrap,.grid2{grid-template-columns:minmax(0,1fr)}.grid3,footer .wrap{grid-template-columns:minmax(0,1fr)}.court{max-width:520px;margin:0 auto}}
+@media(max-width:900px){.hero .wrap,.grid2{grid-template-columns:minmax(0,1fr)}.grid3,footer .wrap,.news{grid-template-columns:minmax(0,1fr)}.court{max-width:520px;margin:0 auto}}
 @media(max-width:600px){.nav{gap:4px;padding:6px 12px}.mark{width:32px;height:32px;font-size:17px}.brand b{font-size:19px}.brand small{font-size:11px}.nav nav{width:100%;overflow-x:auto;flex-wrap:nowrap;scrollbar-width:none}.nav nav a{flex:none;font-size:15px;padding:10px 8px}.match{padding:12px 14px}.match .tm{font-size:26px}.day{font-size:18px}.proto{font-size:13px;padding:6px 12px}.slot{grid-template-columns:40px 96px minmax(0,1fr);font-size:14px}}
 </style>
 </head>
@@ -122,7 +134,8 @@ footer a{color:#fff}
     </a>
     <nav aria-label="Hovedmeny">
       <a href="#kamper">Kamper</a>
-      <a href="#prov">Prøv basket</a>
+      <a href="#nyheter">Nyheter</a>
+      <a href="#prov">Begynn</a>
       <a href="#tider">Treningstider</a>
       <a href="#klubben">Om klubben</a>
       <a href="#styret">Styret</a>
@@ -136,17 +149,18 @@ footer a{color:#fff}
 <section class="hero band">
   <div class="wrap">
     <div>
-      <p class="lbl">Fredrikstad Basketballklubb</p>
-      <h1>Prøv basket – gratis hele sesongen</h1>
-      <p class="lead">Basketskolen er for jenter og gutter født 2015 eller senere. Alle kan begynne, også uten å ha spilt før.</p>
+      <p class="lbl">Fredrikstad Basketballklubb · Lumberjacks</p>
+      <h1>En klubb for alle</h1>
+      <p class="lead">Basket for barn, unge og voksne i Fredrikstad. Fra Basketskolen for de yngste til seniorlag for kvinner og menn.</p>
       <ul class="facts">
-        <li>Gratis trening 2026/27</li>
-        <li>Egen ball til alle som blir</li>
-        <li>Medlemskap 50 kr i året</li>
+        <li>Rundt 300 medlemmer</li>
+        <li>Lag fra U10 til senior</li>
+        <li>Siden 1995</li>
+        <li id="wk" hidden></li>
       </ul>
       <div class="cta">
-        <a class="btn w" href="https://spond.com/invite/MHKOP">Bli med i Spond</a>
-        <a class="btn o" href="#tider">Se treningstider</a>
+        <a class="btn w" href="#tider">Finn ditt lag</a>
+        <a class="btn o" href="#prov">Begynn med basket</a>
       </div>
     </div>
     <svg class="court" viewBox="0 0 520 440" role="img" aria-label="Tegning av en basketbane sett ovenfra med en ball">
@@ -196,7 +210,33 @@ footer a{color:#fff}
   </div>
 </section>
 
-<section class="band" id="prov">
+<section class="band" id="nyheter" aria-labelledby="nyheter-h">
+  <div class="wrap">
+    <h2 id="nyheter-h">Nytt fra klubben</h2>
+    <div class="news">
+      <article class="lead-story">
+        <p class="lbl">November 2026 · Basketskolen</p>
+        <h3>Basketskolen er gratis hele sesongen</h3>
+        <p>Styret har vedtatt at Basketskolen er gratis i sesongen 2026/27. Tilbudet er for jenter og gutter født 2015 eller senere, og alle kan begynne når som helst, også uten å ha spilt før. Alle som blir med, får sin egen ball. Det eneste det koster, er medlemskapet på 50 kr i året.</p>
+        <a class="btn w" href="#prov">Slik begynner du</a>
+      </article>
+      <div class="side">
+        <article class="story">
+          <p class="lbl">Lørdag 5. desember</p>
+          <h3>U16-guttene spiller NM-kvalifisering</h3>
+          <p>To kamper i Rykkinnhallen: kl. 10.00 mot Oppsal Basket 1 og kl. 15.15 mot Drammen Rivers.</p>
+        </article>
+        <article class="story">
+          <p class="lbl">Onsdag 9. desember</p>
+          <h3>Juleavslutning i Lislebyhallen</h3>
+          <p>Kl. 17.30. Åpen for alle medlemmer, også de som nettopp har begynt.</p>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band soft" id="prov">
   <div class="wrap grid2">
     <div>
       <h2>Slik begynner du</h2>
@@ -362,6 +402,8 @@ fetch('matches.json',{cache:'no-store'}).then(r=>r.ok?r.json():[]).catch(()=>[])
   let shown=all.filter(m=>m.d<=end);
   if(shown.length<3&&all.length){end=endOfWeek(new Date(end.getTime()+864e5));shown=all.filter(m=>m.d<=end);if(!shown.length)shown=all.filter(m=>m.d<=endOfWeek(all[0].d))}
   draw(shown);
+  const wkEnd=endOfWeek(new Date()),nWk=all.filter(m=>m.d<=wkEnd).length,wk=document.getElementById('wk');
+  if(nWk&&wk){wk.innerHTML=`<a href="#kamper">${nWk} ${nWk===1?'kamp':'kamper'} denne uka</a>`;wk.hidden=false}
   if(all.length>shown.length){moreBtn.hidden=false;moreBtn.textContent=`Vis alle kommende kamper (${all.length})`;moreBtn.onclick=()=>{draw(all);moreBtn.hidden=true}}
 });
 document.getElementById('people').innerHTML=people.map(p=>`<div class="person"><div class="lbl">${esc(p[0])}</div><div>${esc(p[1])}</div></div>`).join('');
