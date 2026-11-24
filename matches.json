@@ -198,5 +198,125 @@
   "away": "Snarøya Badgers G16",
   "arena": "Lislebyhallen",
   "team": "G16B"
+ },
+ {
+  "nr": "1001040",
+  "start": "2026-12-19T13:00:00",
+  "home": "Fredrikstad",
+  "away": "Oppsal 3 (D)",
+  "arena": "Lislebyhallen",
+  "team": "Kvinner 3. div"
+ },
+ {
+  "nr": "1703083",
+  "start": "2026-12-19T16:00:00",
+  "home": "Asker Aliens G15 - Heat",
+  "away": "Fredrikstad",
+  "arena": "Leikvollhallen B",
+  "team": "G15B"
+ },
+ {
+  "nr": "1902087",
+  "start": "2026-12-20T14:30:00",
+  "home": "Oppsal 2012",
+  "away": "Fredrikstad",
+  "arena": "Oppsal Arena 4",
+  "team": "G16A2"
+ },
+ {
+  "nr": "1001058",
+  "start": "2027-01-09T10:00:00",
+  "home": "Fredrikstad",
+  "away": "Nordberg Kvinner 2",
+  "arena": "Lislebyhallen",
+  "team": "Kvinner 3. div"
+ },
+ {
+  "nr": "1703097",
+  "start": "2027-01-09T11:30:00",
+  "home": "Fredrikstad",
+  "away": "Persbråten Pro Generation G15 (D)",
+  "arena": "Lislebyhallen",
+  "team": "G15B"
+ },
+ {
+  "nr": "1902065",
+  "start": "2027-01-09T13:00:00",
+  "home": "Fredrikstad",
+  "away": "Ammerud G16",
+  "arena": "Lislebyhallen",
+  "team": "G16A2"
+ },
+ {
+  "nr": "3202073",
+  "start": "2027-01-09T14:30:00",
+  "home": "Fredrikstad",
+  "away": "Kolbotn Wolves G18",
+  "arena": "Lislebyhallen",
+  "team": "G19B"
+ },
+ {
+  "nr": "81050",
+  "start": "2027-01-09T16:00:00",
+  "home": "Fredrikstad",
+  "away": "Jessheim Elite Troopers",
+  "arena": "Lislebyhallen",
+  "team": "Herrer 3. div"
+ },
+ {
+  "nr": "5801099",
+  "start": "2027-01-10T11:30:00",
+  "home": "URRA Basket",
+  "away": "Fredrikstad",
+  "arena": "Uranienborg Flerbrukshall",
+  "team": "G13"
+ },
+ {
+  "nr": "1902101",
+  "start": "2027-01-10T12:00:00",
+  "home": "Ammerud G16",
+  "away": "Fredrikstad",
+  "arena": "Apalløkka 1",
+  "team": "G16A2"
+ },
+ {
+  "nr": "2002091",
+  "start": "2027-01-10T17:00:00",
+  "home": "Ullern Basket 56ers G2011/12",
+  "away": "Fredrikstad (D)",
+  "arena": "Ørakerhallen",
+  "team": "G16B"
+ },
+ {
+  "nr": "81068",
+  "start": "2027-01-10T17:30:00",
+  "home": "Nordstrand",
+  "away": "Fredrikstad",
+  "arena": "Lambertseter Flerbrukshall",
+  "team": "Herrer 3. div"
+ },
+ {
+  "nr": "1402106",
+  "start": "2027-01-16T11:30:00",
+  "home": "Lommedalen 2",
+  "away": "Fredrikstad (D)",
+  "arena": "Lommedalshallen",
+  "team": "G14B"
+ },
+ {
+  "nr": "1902072",
+  "start": "2027-01-17T12:00:00",
+  "home": "Bergkameratene - Basket",
+  "away": "Fredrikstad",
+  "arena": "Kongsberghallen",
+  "team": "G16A2"
+ },
+ {
+  "nr": "1402086",
+  "start": "2027-01-17T13:00:00",
+  "home": "Langhus Lions (D)",
+  "away": "Fredrikstad (D)",
+  "arena": "Langhushallen",
+  "team": "G14B"
  }
 ]
